@@ -123,9 +123,8 @@ float debit(int const &dt) {
   static unsigned long last_numberOfInterrupts = 0;
   static unsigned long last = 0;
   static float q = 0.0;
-  int delta_t = now - last;
-  if (delta_t > dt*60000) { //  toutes les 10min
-    Serial.print("DEBIT10MIN");
+  double delta_t = now - last;
+  if (delta_t > (dt * 60000)) { //  toutes les 10min
     q = ((numberOfInterrupts - last_numberOfInterrupts) / 262.0) / (delta_t / 60000.0);
     last_numberOfInterrupts = numberOfInterrupts;
     last = now;
